@@ -63,26 +63,6 @@ usageall %>%
   mutate(Ranks = seq_along(Name)) %>% 
   select(Name, Team, scoringusage, pmausage, TotUsage, Ranks)
   
-a
-
-write.xlsx(a, "tabloscoPavg.xlsx")
-
-pgrou = a %>% 
-  group_by(Ranks) %>% 
-  summarise(AvgScore = mean(scoringusage), AvgPmake = mean(pmausage)) %>% 
-  ungroup()
-  
-write.xlsx(pgrou, "PlayerGroups.xlsx")
-
-asd = read.xlsx("tabloscoPavg.xlsx", sheetIndex = 1)
-hoopp = asd %>% 
-  group_by(Ranks, TeamLevel) %>% 
-  summarise(AvgScore = mean(scoringusage), AvgPmake = mean(pmausage)) %>% 
-  ungroup()
-
-write.xlsx(hoopp, "gruplu.xlsx")
-
-
 usageall %>% 
   filter(Minutes.x.x > 300) %>% 
   mutate(totalusage = scoringusage + pmausage + turnoverusage) %>% 
